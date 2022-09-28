@@ -1,25 +1,71 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: 'Mohammad'
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount()")
+    this.removeStat()
+
+  }
+  componentDidMount() {
+    console.log("componentDidMount()")
+
+  }
+  
+  changeState(){
+    this.setState({content:'Kashif'})
+  }
+  
+
+  componentWillReceiveProps(nexProps, nexState){
+
+    console.log("componentWillReceiveProps()")
+
+    return true;
+
+  }
+
+  componentWillUpdate(){
+
+    console.log("componentWillUpdate()")
+
+  }
+
+  componentDidUpdate(){
+    console.log("componentDidUpdate()")
+  }
+
+  removeStat(){
+    this.setState({content: ''})
+  }
+
+
+
+
+compo
+  render() {
+
+    return (
+
+      <div className='container'>
+        <h2 className='text-center'>React LifeCycle Methods</h2>
+        <p className='text-center'>Welocme to ReactWorld {this.state.content}</p>
+        <div className='text-center'>
+        <button onClick={this.changeState.bind(this)} style={{marginRight: '10px', background: '#f27935', padding: '10px', border: 'none', cursor: 'pointer', borderRadius: '6px', fontWeight: 'bold'}}>Change State</button>
+        <button onClick={this.removeStat.bind(this)} style={{marginRight: '10px', background: '#f27935', padding: '10px', border: 'none', cursor: 'pointer', borderRadius: '6px', fontWeight: 'bold'}}>Remove State</button>
+        </div>
+      </div>
+    )
+
+  }
 }
 
 export default App;
